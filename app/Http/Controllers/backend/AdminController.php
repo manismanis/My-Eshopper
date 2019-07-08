@@ -51,7 +51,7 @@ class AdminController extends BackendController
             }
 
             if (Admin::create($data)) {    //hamro admins bhanne table Admin bhanne model sanga related chha so..
-                return redirect()->route('admin')->with('success', 'Data is inserted');
+                return redirect()->route('admin')->with('success', 'Data has been inserted');
 
             }
         }
@@ -75,7 +75,7 @@ class AdminController extends BackendController
             }
 
             if ($admin->update()) {
-                return redirect()->route('admin')->with('success', 'Status is updated successfully');
+                return redirect()->route('admin')->with('success', 'Status has been updated successfully');
             }
         }
 
@@ -101,7 +101,7 @@ class AdminController extends BackendController
             }
 
             if ($admin->update()) {
-                return redirect()->route('admin')->with('success', 'User Type is updated successfully');
+                return redirect()->route('admin')->with('success', 'User Type has been updated successfully');
             }
         }
 
@@ -128,7 +128,7 @@ class AdminController extends BackendController
         $findData = Admin::findOrFail($criteria);
         if ($this->deleteFile($criteria) && ($findData->delete())) {
 
-            return redirect()->route('admin')->with('success', 'Data is deleted');
+            return redirect()->route('admin')->with('success', 'Data has been deleted');
         }
 
 
@@ -182,7 +182,7 @@ class AdminController extends BackendController
             }
 
             if (Admin::where('id', '=', $criteria)->update($data)) {
-                return redirect()->route('admin')->with('success', 'Data is updated');
+                return redirect()->route('admin')->with('success', 'Data has been updated');
 
 
             }

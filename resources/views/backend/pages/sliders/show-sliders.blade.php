@@ -50,7 +50,7 @@
                                         <tr>
                                             <td>{{++$key}}</td>
                                             <td>{{$slide->title}}</td>
-                                            <td>{{$slide->description}}</td>
+                                            <td>{{strip_tags($slide->description)}}</td>
                                             <td>
                                                 <form action="{{route('update-slide-status')}}" method="post">
                                                     {{csrf_field()}}
@@ -71,9 +71,11 @@
                                                      alt="">
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                                <a href=""
-                                                   onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm"><i
+                                                <a href="{{route('edit-slider').'/'.$slide->id}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('delete-slider').'/'.$slide->id}}"
+                                                   onclick="return confirm('Are you sure?')"
+                                                   class="btn btn-danger btn-xs"><i
                                                             class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

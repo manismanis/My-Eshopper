@@ -39,7 +39,7 @@
                                         <div class="form-group form-group-sm">
                                             <label for="cat_name">Select  Category</label>
                                             <select name="cat_name"  class="form-control">
-                                                <option value="">--Select Category--</option>
+                                                <option disabled selected value="">--Select Category--</option>
                                                 @foreach ($catData as $key=>$cat)
                                                     <option value="{{$cat->id}}">{{ucfirst($cat->cat_name)}}</option>
                                                 @endforeach

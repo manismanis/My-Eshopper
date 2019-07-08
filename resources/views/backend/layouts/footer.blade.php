@@ -43,7 +43,6 @@
     <script src="{{url('backend/build/js/custom.min.js')}}"></script>
     <script src="{{url('backend/custom/custom.js')}}"></script>
     <script src="{{url('backend/custom/addfield.js')}}"></script>
-    <script src="{{url('backend/vendors/select2/select2.full.min.js')}}"></script>
 
 
 

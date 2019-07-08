@@ -12,7 +12,7 @@ Route::group(['namespace' => 'frontend'], function () {                      //n
     //to show the details of the items..
     Route::any('/item-detail/{id}', 'ApplicationController@itemDetail')->name('item-detail');
     //===========================add to cart=======================
-    Route::any('add-to-cart', 'ApplicationController@addtoCart')->name('add-to-cart');
+    Route::any('add-to-cart/{id}', 'ApplicationController@addtoCart')->name('add-to-cart');
     //=========================view cart============================================
     Route::any('view-cart', 'ApplicationController@viewCart')->name('view-cart');
 
@@ -46,6 +46,13 @@ Auth::routes();
 
 Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
 
+    //===========Routes to reset the password=====//
+    Route::post('admin-password/email', 'Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::any('admin-password/reset', 'Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('admin-password/reset', 'Admin\ResetPasswordController@reset')->name('admin.password.request');
+    Route::get('admin-password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+
+
     Route::any('admin-login', 'AdminLoginController@login')->name('admin-login');
 
     Route::group(['middleware' => 'auth:admin'], function () {
@@ -68,10 +75,16 @@ Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
 
         });
 
+        //===============slider routes===============
+
         Route::group(['prefix' => 'slider',], function () {
             Route::any('/', 'SliderController@index')->name('slider');
             Route::any('add-slider', 'SliderController@addSlider')->name('add-slider');
             Route::any('update-slide-status', 'SliderController@updateSliderStatus')->name('update-slide-status');
+            Route::any('delete-slider/{criteria?}', 'SliderController@deleteSlide')->name('delete-slider');
+            Route::any('edit-slider/{criteria?}', 'SliderController@editSlide')->name('edit-slider');
+            Route::any('edit-slider-action', 'SliderController@editSlideAction')->name('edit-slider-action');
+
 
         });
 
@@ -81,14 +94,20 @@ Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
         Route::group(['prefix' => 'category',], function () {
             Route::any('/', 'CategoryController@index')->name('category');
             Route::any('add-category', 'CategoryController@addCategory')->name('add-category');
+            Route::any('delete-category/{criteria?}', 'CategoryController@deleteCategory')->name('delete-category');
+            Route::any('edit-category/{criteria?}', 'CategoryController@editCategory')->name('edit-category');
+            Route::any('edit-category-action', 'CategoryController@editCategoryAction')->name('edit-category-action');
+
 
         });
 
         //=============sub-category routes==================
 
-        Route::group(['prefix' => 'sub-category',], function () {
+        Route::group(['prefix' => 'subcategory',], function () {
             Route::any('/', 'SubCategoryController@index')->name('subcategory');
             Route::any('add-subcategory', 'SubCategoryController@addSubCategory')->name('add-subcategory');
+            Route::any('delete-subcategory/{criteria?}', 'SubCategoryController@deleteSubcategory')->name('delete-subcategory');
+
 
         });
 
@@ -97,6 +116,10 @@ Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
         Route::group(['prefix' => 'brands',], function () {
             Route::any('/', 'BrandController@index')->name('brands');
             Route::any('add-brand', 'BrandController@addBrand')->name('add-brand');
+            Route::any('delete-brand/{criteria?}', 'BrandController@deleteBrand')->name('delete-brand');
+            Route::any('edit-brand/{criteria?}', 'BrandController@editBrand')->name('edit-brand');
+            Route::any('edit-brand-action', 'BrandController@editBrandAction')->name('edit-brand-action');
+
 
         });
 
@@ -105,6 +128,10 @@ Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
         Route::group(['prefix' => 'items',], function () {
             Route::any('/', 'ItemController@index')->name('items');
             Route::any('add-item', 'ItemController@addItem')->name('add-item');
+            Route::any('delete-item/{criteria?}', 'ItemController@deleteItem')->name('delete-item');
+            Route::any('edit-item/{criteria?}', 'ItemController@editItem')->name('edit-item');
+            Route::any('edit-item-action', 'ItemController@editItemAction')->name('edit-item-action');
+
 
             //==============================backend/product-attributes====================
             Route::any('/item-attribute/{id}', 'ItemController@addAttribute')->name('item-attribute');

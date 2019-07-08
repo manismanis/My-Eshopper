@@ -89,9 +89,9 @@
                                                      alt="">
                                             </td>
                                             <td>
-                                                <a href="{{route('edit-user').'/'.$admin->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('edit-user').'/'.$admin->id}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{route('delete-user').'/'.$admin->id}}"
-                                                   onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm"><i
+                                                   onclick="return confirm('Are you sure?')" class="btn btn-danger btn-xs"><i
                                                             class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

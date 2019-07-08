@@ -11,7 +11,7 @@ class AdminLoginController extends Controller
     public function login(Request $request)
     {
         if ($request->isMethod('get')) {
-            return view('admin-login');
+            return view('admin-auth.admin-login');
         }
 
         if ($request->isMethod('post')) {

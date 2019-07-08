@@ -36,4 +36,47 @@ class CategoryController extends BackendController
             return redirect()->route('category')->with('success', 'Category is created');
         }
     }
+
+    public function deleteCategory(Request $request)
+    {
+        $criteria = $request->criteria;
+        $findData = Category::findOrFail($criteria);
+        if (($findData->delete())) {
+
+            return redirect()->route('category')->with('success', 'Category has been deleted');
+        }
+    }
+
+    public function editCategory(Request $request)
+    {
+        $criteria = $request->criteria;
+        $findData = Category::findOrFail($criteria);
+        $this->data('categoryData', $findData);
+        return view($this->pagePath . 'category.edit-cat', $this->data);
+
+    }
+
+    public function editCategoryAction(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+
+        if ($request->isMethod('post')) {
+            $criteria = $request->criteria;
+            $this->validate($request, [
+                'cat_name' => 'required|min:3|max:50'
+            ]);
+
+            $data['cat_name'] = $request->cat_name;
+
+            if (Category::where('id', '=', $criteria)->update($data)) {
+                return redirect()->route('category')->with('success', 'Category has been updated');
+
+
+            }
+
+        }
+    }
+
 }

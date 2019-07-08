@@ -11,7 +11,7 @@ class Category extends Model
 
     public function subcategory(){
         return $this->hasMany('App\Subcategory','cat_id','id'); // id chai Category table kai ho
-                                                                                          //items ko dropdown menu ma along with Category dekhauna 'hasMany' gareko..
+                                                                                          //backendma items ko dropdown menu ma along with Category dekhauna 'hasMany' gareko..ani frotend ma pani use bhako chha
 
     }
 

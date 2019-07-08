@@ -55,8 +55,9 @@
                                                 <td>{{$subcat->created_at->diffForHumans()}}</td>
                                                 <td>{{$subcat->updated_at->diffForHumans()}}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-                                                    <a href=""
+                                                    <a href="{{route('edit-subcategory').'/'.$subcat->subcat_id}}"
+                                                       class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('delete-subcategory').'/'.$subcat->subcat_id}}"
                                                        class="btn btn-danger btn-xs"
                                                        onclick="return confirm('Are you sure?')"><i
                                                                 class="fa fa-trash"></i></a>

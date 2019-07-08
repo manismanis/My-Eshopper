@@ -32,7 +32,49 @@ class BrandController extends BackendController
         }
 
         if (Brand::create($data)) {
-            return redirect()->route('brands')->with('success', 'Brand is added');
+            return redirect()->route('brands')->with('success', 'Brand has been added');
+        }
+    }
+
+    public function deleteBrand(Request $request)
+    {
+        $criteria = $request->criteria;
+        $findData = Brand::findOrFail($criteria);
+        if (($findData->delete())) {
+
+            return redirect()->route('brands')->with('success', 'Brand has been deleted');
+        }
+    }
+
+    public function editBrand(Request $request)
+    {
+        $criteria = $request->criteria;
+        $findData = Brand::findOrFail($criteria);
+        $this->data('brandData', $findData);
+        return view($this->pagePath . 'brands.edit-brand', $this->data);
+
+    }
+
+    public function editBrandAction(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+
+        if ($request->isMethod('post')) {
+            $criteria = $request->criteria;
+            $this->validate($request, [
+                'brandname' => 'required|min:3|max:50'
+            ]);
+
+            $data['brandname'] = $request->brandname;
+
+            if (Brand::where('id', '=', $criteria)->update($data)) {
+                return redirect()->route('brands')->with('success', 'Brand has been updated');
+
+
+            }
+
         }
     }
 }

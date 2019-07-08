@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <div class="col-sm-6 col-md-6 ">
                 <h4>Contact Us</h4>
                 <hr>
                 <form action="" method="post">
@@ -18,7 +18,8 @@
                     </div>
                     <div class="form-group form-group-sm">
                         <label for="email">Comments/Suggestions</label>
-                        <textarea name="comments" id="comments" class="form-control" cols="30" rows="5" placeholder="Your Comments & Suggestions"></textarea>
+                        <textarea name="comments" id="comments" class="form-control" cols="30" rows="5"
+                                  placeholder="Your Comments & Suggestions"></textarea>
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group form-group-sm">

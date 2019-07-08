@@ -14,7 +14,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">E-Shopper: Admin Login</div>
+                    <div class="card-header"><strong>E-Shopper: Admin Login</strong></div>
                     <div class="card-body">
                         <form method="post" action="{{route('admin-login')}}">
                             {{csrf_field()}}
@@ -47,17 +47,18 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Login
+                                        {{ __('Login') }}
                                     </button>
-
-
+                                    <a class="btn btn-link" href="{{route('admin.password.request')}}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
                                 </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

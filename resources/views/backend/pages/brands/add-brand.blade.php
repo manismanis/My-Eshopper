@@ -36,11 +36,16 @@
                                 <div class="col-md-12">
                                     <form action="{{route('add-brand')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
-                                        <div class="form-group form-group-sm">
-                                            <label for="brandname">Brand Name</label>
-                                            <input type="text" id="brandname" name="brandname" value="{{old('brandname')}}"
-                                                   placeholder="Name of the Brand" class="form-control">
-                                            <a href="" style="color: red">{{$errors->first('brandname')}}</a>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group form-group-sm">
+                                                    <label for="brandname">Brand Name</label>
+                                                    <input type="text" id="brandname" name="brandname"
+                                                           value="{{old('brandname')}}"
+                                                           placeholder="Name of the Brand" class="form-control">
+                                                    <a href="" style="color: red">{{$errors->first('brandname')}}</a>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group form-group-sm">
                                             <button class="btn btn-success btn-sm">Add Brand</button>

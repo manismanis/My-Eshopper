@@ -52,10 +52,11 @@
                                             <td>{{$cat->created_at->diffForHumans()}}</td>
                                             <td>{{$cat->updated_at->diffForHumans()}}</td>
                                             <td>
-                                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                                <a href=""
+                                                <a href="{{route('edit-category').'/'.$cat->id}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('delete-category').'/'.$cat->id}}"
                                                    onclick="return confirm('Are you sure?')"
-                                                   class="btn btn-danger btn-sm"><i
+                                                   class="btn btn-danger btn-xs"><i
                                                             class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

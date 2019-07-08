@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+
 ?>
 @section('header')
         <!DOCTYPE html>
@@ -10,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>eShopper-Online Shopping </title>
+    {{--to add browser-tab icon--}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('uploads/images/extra/bag.png')}}">
     <link href="{{url('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/prettyPhoto.css')}}" rel="stylesheet">

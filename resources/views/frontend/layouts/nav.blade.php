@@ -14,6 +14,11 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <div class="search_box pull-left">
+                            <ul>
+                                <li><input type="text" class="form-control" placeholder="Search anything here..."/></li>
+                            </ul>
+                        </div>
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
@@ -37,7 +42,12 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href={{route('view-cart')}}><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li>
+                                    <a href="{{route('view-cart')}}"><i class="fa fa-shopping-cart">
+                                        </i> Cart <span
+                                                class="badge">{{\Illuminate\Support\Facades\Session::has('cart') ? \Illuminate\Support\Facades\Session::get('cart')->totalQty : ''}}</span>
+                                    </a>
+                                </li>
                                 <li>
                                 @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
                                     <li class="nav-item dropdown">
@@ -76,35 +86,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="#" class="active">Home</a></li>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="{{route('admin-login')}}">Login</a></li>
-                                </ul>
-                                </li>
+                                <li><a href="{{route('index')}}" class="active">Home</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div><!--/header-bottom-->

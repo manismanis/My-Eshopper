@@ -36,6 +36,7 @@ class Item extends Model
 
     }
 
+//================ApplicationController ma use hunchha yo method=======//
     public function ItemAttribute()
     {
         return $this->hasMany('App\ItemAttribute','item_id','id');

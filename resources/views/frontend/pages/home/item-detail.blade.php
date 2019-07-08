@@ -1,7 +1,5 @@
 @extends('frontend.master.master')
-
-
-
+@include('frontend.layouts.sidebar')
 
 @section('content')
     <div class="col-sm-9 padding-right">
@@ -11,37 +9,13 @@
         <div class="product-details"><!--product-details-->
             <div class="col-sm-5">
                 <div class="view-product">
-                    <img src="{{url('uploads/images/items/'.$itemDetailData->image)}}" alt=""/>
+                    <img src="{{url('uploads/images/items/'.$itemDetailData->image)}}" alt="" class="img-responsive thumbnail" style="height: 350px" width="400">
 
                 </div>
-                <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-                    {{--<!-- Wrapper for slides -->--}}
-                    {{--<div class="carousel-inner">--}}
-                    {{--<div class="item active">--}}
-                    {{--<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>--}}
-                    {{--</div>--}}
-                    {{--<div class="item">--}}
-                    {{--<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>--}}
-                    {{--</div>--}}
-                    {{--<div class="item">--}}
-                    {{--<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>--}}
-                    {{--<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>--}}
-                    {{--</div>--}}
-
-                    {{--</div>--}}
-
-
-                </div>
-
             </div>
             <div class="col-sm-7">
-                <form action="{{route('add-to-cart')}}" name="addtocartForm" id="addtocartForm" method="post">
+                <form action="{{route('add-to-cart', ['id' => $itemDetailData->id])}}" name="addtocartForm"
+                      id="addtocartForm" method="post">
                     {{csrf_field()}}
 
                     <input type="hidden" name="item_id" value="{{$itemDetailData->id}}">

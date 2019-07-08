@@ -112,13 +112,14 @@
                                                      alt="">
                                             </td>
                                             <td>
-                                                <a href="{{route('item-attribute',$item->id)}}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Add</a>
+                                                <a href="{{route('item-attribute',$item->id)}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Add</a>
                                             </td>
                                             <td>{{$item->created_at->diffForHumans()}}</td>
                                             <td>{{$item->updated_at->diffForHumans()}}</td>
                                             <td>
-                                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-                                                <a href=""
+                                                <a href="{{route('edit-item').'/'.$item->id}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('delete-item').'/'.$item->id}}"
                                                    class="btn btn-danger btn-xs"
                                                    onclick="return confirm('Are you sure?')"><i
                                                             class="fa fa-trash"></i></a>

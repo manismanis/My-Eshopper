@@ -11,11 +11,16 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::create([
-            'name' => 'Manish Shrestha',
-            'email' => 'shresthamanees@gmail.com',
-            'password' => bcrypt('123'),
+        $date = date_create("1996-10-28");
 
+        \App\User::create([
+            'email' => 'stokesy@gmail.com',
+            'password' => bcrypt('11111111'),
+            'name' => 'Ben Stokes',
+            'gender' => 'male',
+            'dob' => date_format($date,"Y/m/d H:i:s"),
+            'phone_no' => '98430-21502',
+            'image' => '04f64ef6888634c0a4ec8c0c2725ec21.jpg',
         ]);
 
     }

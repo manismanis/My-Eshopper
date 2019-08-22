@@ -9,6 +9,9 @@
             <div class="clearfix"></div>
 
             <div class="row">
+                <a href="{{route('add-admin')}}" style="font-size: medium;" class="btn btn-sm"><i class="fa fa-plus"></i>
+                    Add Admin</a>
+                <hr>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -89,9 +92,11 @@
                                                      alt="">
                                             </td>
                                             <td>
-                                                <a href="{{route('edit-user').'/'.$admin->id}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('edit-user').'/'.$admin->id}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{route('delete-user').'/'.$admin->id}}"
-                                                   onclick="return confirm('Are you sure?')" class="btn btn-danger btn-xs"><i
+                                                   onclick="return confirm('Are you sure?')"
+                                                   class="btn btn-danger btn-xs"><i
                                                             class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

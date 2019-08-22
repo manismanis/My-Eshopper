@@ -33,7 +33,7 @@
                         </div>
                         <div class="x_content">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <form action="{{route('add-subcategory')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group form-group-sm">
@@ -45,7 +45,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
                                         <div class="form-group form-group-sm">
                                             <label for="subcat_name">Title</label>
                                             <input type="text" id="subcat_name" name="subcat_name"

@@ -9,6 +9,9 @@
             <div class="clearfix"></div>
 
             <div class="row">
+                <a href="{{route('add-slider')}}" style="font-size: medium;" class="btn btn-sm"><i class="fa fa-plus"></i>
+                    Add Slider</a>
+                <hr>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">

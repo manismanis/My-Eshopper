@@ -9,6 +9,8 @@
             <div class="clearfix"></div>
 
             <div class="row">
+                <a href="{{route('add-brand')}}" style="font-size: medium" class="btn btn-sm"><i class="fa fa-plus"></i> Add Brand</a>
+                <hr>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -52,7 +54,8 @@
                                             <td>{{$brand->created_at}}</td>
                                             <td>{{$brand->updated_at}}</td>
                                             <td>
-                                                <a href="{{route('edit-brand').'/'.$brand->id}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('edit-brand').'/'.$brand->id}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{route('delete-brand').'/'.$brand->id}}"
                                                    onclick="return confirm('Are you sure?')"
                                                    class="btn btn-danger btn-xs"><i

@@ -12,10 +12,8 @@
 
 
                             <div class="panel panel-default">
-                                {{--@foreach($catData as $cat)--}}
-                                    @foreach($categoryData as $key=>$cat)
 
-
+                                @foreach($categoryData as $key=>$cat)
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordian" href="#{{$cat->id}}">
@@ -29,6 +27,7 @@
                                             <ul>
                                                 {{--hasMany ko kam yaha nira ho--}}
                                                 @foreach($cat->subcategory as $subcat)
+                                                    {{--to count the items--}}
                                                     <?php $itemCountSubcat = Item::itemCountSubcat($subcat->subcat_id); ?>
 
                                                     <li>
@@ -78,5 +77,6 @@
 
                     </div>
                 </div>
+
 
 @endsection

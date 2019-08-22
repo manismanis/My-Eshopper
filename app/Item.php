@@ -22,6 +22,7 @@ class Item extends Model
 
 
 //==============sidebarko subcategory bhitrako items count garnako lagi===========//
+//===============Any method declared as static is accessible without the creation of an object=====//
     public static function itemCountSubcat($subcat_id)
     {
         $subcatCount = Item::all()->where('subcat_id', $subcat_id)->count();

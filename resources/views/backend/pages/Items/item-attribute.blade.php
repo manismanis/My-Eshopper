@@ -70,8 +70,8 @@
                                                 <br><br>
 
 
-                                                <input type="text" name="price[]" id="price[]" style="height: 30px"
-                                                       placeholder="Price"/>
+                                                <input type="text" name="color[]" id="color[]" style="height: 30px"
+                                                       placeholder="Color"/>
                                                 <input type="text" name="stock[]" id="stock[]" style="height: 30px"
                                                        placeholder="Stock"/>
 
@@ -95,7 +95,7 @@
                                         <th>S.N</th>
                                         <th>S.K.U</th>
                                         <th>Size</th>
-                                        <th>Price</th>
+                                        <th>Color Available</th>
                                         <th>Stock</th>
                                         <th>Action</th>
                                     </tr>
@@ -107,7 +107,7 @@
                                             <td>{{++$key}}</td>
                                             <td>{{$attribute->sku}}</td>
                                             <td>{{$attribute->size}}</td>
-                                            <td>{{$attribute->price}}</td>
+                                            <td>{{$attribute->color}}</td>
                                             <td>{{$attribute->stock}}</td>
                                             <td>
                                                 <a href="" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>

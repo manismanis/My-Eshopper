@@ -6,7 +6,6 @@ Route::group(['namespace' => 'frontend'], function () {                      //n
     Route::any('/', 'ApplicationController@index')->name('index');
     Route::any('contact', 'ApplicationController@contact')->name('contact');
 
-
     //to show the items...
     Route::any('showItems/{subcat_id}', 'ApplicationController@showItems')->name('showitems');
     //to show the details of the items..
@@ -14,33 +13,38 @@ Route::group(['namespace' => 'frontend'], function () {                      //n
     //===========================add to cart=======================
     Route::any('add-to-cart/{id}', 'ApplicationController@addtoCart')->name('add-to-cart');
     //=========================view cart============================================
-    Route::any('view-cart', 'ApplicationController@viewCart')->name('view-cart');
+    Route::any('/shoppingCart', 'ApplicationController@ShoppingCart')->name('shoppingCart');
+
+    Route::group(['middleware' => 'auth:web'], function (){    //cant place the order without logging as an user..
+        Route::any('/manage-account', 'ApplicationController@ManageAccount')->name('manage-account');
+        //-- Profile
+        Route::any('/manage-account/profile', 'ApplicationController@userProfile')->name('user-profile');
+        //-- Address
+        Route::any('/manage-account/address', 'ApplicationController@userAddress')->name('user-address');
+        Route::any('/manage-account/address/delete/{id}', 'ApplicationController@deleteUserAddress')->where('id', '[0-9]+')->name('delete-user-address');
+        Route::any('/manage-account/address/edit/{criteria?}', 'ApplicationController@editUserAddress')->where('id', '[0-9]+')->name('edit-user-address');
+        Route::any('/manage-account/address/edit-action/{criteria?}', 'ApplicationController@editUserAddressAction')->where('id', '[0-9]+')->name('edit-user-address-action');
+        //-- Payment Options
+        Route::any('/manage-account/payment-options', 'ApplicationController@userPaymentOptions')->name('user-payment-options');
+        Route::any('/manage-account/payment-options/delete/{id}', 'ApplicationController@deleteUserPaymentOptions')->where('id', '[0-9]+')->name('delete-user-payment-options');
+        Route::any('/payment-options/esewa', 'ApplicationController@PaymentOptionseSewa')->name('payment-options-esewa');
+        //-- Shopping
+        Route::any('/checkout', 'ApplicationController@checkout')->name('checkout');
+        Route::any('/checkout-proceed', 'ApplicationController@checkoutProceed')->name('checkout-proceed');
+        Route::any('/manage-orders', 'OrderController@index')->name('manage-orders');
+        Route::any('/manage-orders/user-orders', 'OrderController@userOrders')->name('user-orders');
+    });
+
 
 
 });
 
-//Route::group(['prefix' => '@admin'], function () {
-//
-//    Route::any('admin-login', 'AdminLoginController@login')->name('admin-login');
-//
-//    Route::group(['middleware' => 'auth:admin'], function () {
-//        Route::any('/', 'DashboardController@index')->name('dashboard');
-//
-//
-//        Route::any('admin-logout', 'AdminLoginController@logout')->name('admin-logout');
-//
-//    });
-//
-//});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 
 //=============Backend Routes======================
-
-//Route:: group(['namespace' => 'backend', 'prefix' => '@admin'], function () {  //prefix le / pachhiko title dekhauchha
-//    Route::any('/', 'DashboardController@index')->name('dashboard');
 
 //============backend login============//
 
@@ -60,6 +64,7 @@ Route::group(['namespace' => 'backend', 'prefix' => '@admin'], function () {
 
 
         Route::any('admin-logout', 'AdminLoginController@logout')->name('admin-logout');
+
 
 
         //===============admin routes===============

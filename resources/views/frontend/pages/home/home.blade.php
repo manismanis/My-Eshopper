@@ -6,34 +6,33 @@ use App\Item;
 @extends('frontend.master.master')
 @include('frontend.layouts.slider')
 @include('frontend.layouts.sidebar')
+@include('frontend.layouts.footer')
 
 @section('content')
 
 
-    <div class="col-sm-9 padding-right" >
+    <div class="col-sm-9 padding-right">
         <div class="features_items"><!--features_items-->
             <h2 class="title text-center">Featured Items</h2>
             @foreach ($itemData as $key => $item)
                 @if ($item->isFeatured == 1)
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" style="width: 248px">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="{{url('uploads/images/items/' . $item->image) }}"
-                                         class="img-responsive thumbnail"
                                          alt="" style="margin-top: 23px">
                                     <h2>RS {{$item->price}}</h2>
                                     <p>{{$item->itemname}}</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i
-                                                class="fa fa-shopping-cart"></i>Add
-                                        to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
-                                        <h2>RS.{{$item->price}}</h2>
+                                        <img src="{{url('uploads/images/items/'.$item->image)}}" height="180"
+                                             width="212px" alt=""/>
+                                        <h4>RS.{{$item->price}}</h4>
                                         <p>{{$item->itemname}}</p>
                                         <a href="{{route('item-detail',$item->id)}}"
-                                           class="btn btn-default add-to-cart"><i
+                                           class="btn btn-default btn-xs add-to-cart"><i
                                                     class="fa fa-eye"></i>View Item</a>
                                     </div>
                                 </div>
@@ -49,9 +48,8 @@ use App\Item;
                     </div>
                 @endif
             @endforeach
-
-
         </div><!--features_items-->
+        {{$itemData->links()}}
 
         <div class="recommended_items"><!--recommended_items-->
             <h2 class="title text-center">Recommended items</h2>
@@ -61,14 +59,12 @@ use App\Item;
                     <div class="item active">
                         @foreach ($itemData as $key => $item)
                             @if ($item->isRecommended == 1)
-                                <div class="col-sm-4">
+                                <div class="col-sm-4" style="width: 248px">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="{{url('uploads/images/items/' . $item->image) }}"
-                                                     width="5000" class="img-responsive thumbnail"
-
-                                                     alt=""/>
+                                                     width="5000" alt=""/>
                                                 <h2>RS.{{$item->price}}</h2>
                                                 <p>{{$item->itemname}}</p>
                                                 <a href="{{route('item-detail',$item->id)}}"
@@ -95,6 +91,10 @@ use App\Item;
             </div>
         </div><!--/recommended_items-->
 
+    </div>
+
+
+    {{--to keep sidebar in correct position--}}
     </div>
     </div>
     </div>

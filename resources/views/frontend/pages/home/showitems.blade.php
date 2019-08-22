@@ -9,7 +9,7 @@
             <?php
             if ($byCategory != "") {
                 $itemData = $showItems;
-                echo '<h2 class="title text-center">SubCategory : ' . $byCategory->subcat_name . '</h2>';
+                echo '<h2 class="title text-center">Available ' . $byCategory->subcat_name . '</h2>';
             }
             ?>
             @foreach($itemData as $item)

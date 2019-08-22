@@ -8,5 +8,7 @@ class Brand extends Model
 {
     protected $fillable = ['brandname'];
 
+    //================ApplicationController ma use hunchha yo method=======//
+
 
 }

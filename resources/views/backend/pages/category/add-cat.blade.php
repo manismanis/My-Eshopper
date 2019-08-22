@@ -33,7 +33,7 @@
                         </div>
                         <div class="x_content">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <form action="{{route('add-category')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group form-group-sm">

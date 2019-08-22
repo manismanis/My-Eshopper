@@ -9,6 +9,9 @@
             <div class="clearfix"></div>
 
             <div class="row">
+                <a href="{{route('add-subcategory')}}" style="font-size: medium;" class="btn btn-sm"><i class="fa fa-plus"></i>
+                    Add Subcategory</a>
+                <hr>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -55,7 +58,7 @@
                                                 <td>{{$subcat->created_at->diffForHumans()}}</td>
                                                 <td>{{$subcat->updated_at->diffForHumans()}}</td>
                                                 <td>
-                                                    <a href="{{route('edit-subcategory').'/'.$subcat->subcat_id}}"
+                                                    <a href=""
                                                        class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
                                                     <a href="{{route('delete-subcategory').'/'.$subcat->subcat_id}}"
                                                        class="btn btn-danger btn-xs"

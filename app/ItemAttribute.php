@@ -10,7 +10,7 @@ class ItemAttribute extends Model
         'item_id',
         'sku',
         'size',
-        'price',
+        'color',
         'stock'
     ];
 

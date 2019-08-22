@@ -191,7 +191,7 @@ class ItemController extends BackendController
                     $attribute->item_id = $id;
                     $attribute->sku = $val;
                     $attribute->size = $data['size'][$key];
-                    $attribute->price = $data['price'][$key];
+                    $attribute->color = $data['color'][$key];
                     $attribute->stock = $data['stock'][$key];
                     if ($attribute->save()) {
                         return redirect()->back()->with('success', 'Attributes have been added successfully');

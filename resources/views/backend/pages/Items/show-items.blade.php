@@ -9,6 +9,9 @@
             <div class="clearfix"></div>
 
             <div class="row">
+                <a href="{{route('add-item')}}" style="font-size: medium;" class="btn btn-sm"><i class="fa fa-plus"></i>
+                    Create New Item</a>
+                <hr>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -118,7 +121,8 @@
                                             <td>{{$item->created_at->diffForHumans()}}</td>
                                             <td>{{$item->updated_at->diffForHumans()}}</td>
                                             <td>
-                                                <a href="{{route('edit-item').'/'.$item->id}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('edit-item').'/'.$item->id}}"
+                                                   class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{route('delete-item').'/'.$item->id}}"
                                                    class="btn btn-danger btn-xs"
                                                    onclick="return confirm('Are you sure?')"><i

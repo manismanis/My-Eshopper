@@ -1,6 +1,5 @@
 @section('nav')
 
-
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -40,42 +39,92 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="shop-menu pull-right">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <a href="{{route('view-cart')}}"><i class="fa fa-shopping-cart">
-                                        </i> Cart <span
-                                                class="badge">{{\Illuminate\Support\Facades\Session::has('cart') ? \Illuminate\Support\Facades\Session::get('cart')->totalQty : ''}}</span>
-                                    </a>
-                                </li>
-                                <li>
+                        <div class="btn-group pull-right">
+                            <div class="btn-group">
                                 @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ \Illuminate\Support\Facades\Auth::user()->name}} <span
-                                                    class="caret"></span>
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                                    <a type="button" class="btn btn-alert dropdown-toggle" data-toggle="dropdown">
+                                        <img src="{{empty(\Illuminate\Support\Facades\Auth::user()->image) ? url('uploads/images/extra/default_user.jpg') : url('uploads/images/users/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
+                                            height="20px" width="25px" alt="..." class="img-circle profile_img">
+                                        {{ Auth::user()->name }} <span
+                                                class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="container col-sm-12">
+                                            <div><a class="dropdown-item" href="{{ route('manage-account') }}">Manage
+                                                    Account</a></div>
+                                            <div><a class="dropdown-item"
+                                                    href="">Orders</a></div>
+                                            <div><a class="dropdown-item"
+                                                    href="">Wishlist</a></div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <strong><a class="dropdown-item" href="{{ route('logout') }}"
+                                                           onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                  style="display: none;">
-                                                @csrf
-                                            </form>
+                                                        {{ __('Logout') }}
+                                                    </a></strong>
+                                                <form id="logout-form" action="{{ route('logout') }}"
+                                                      method="POST"
+                                                      style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
                                         </div>
-                                    </li>
+                                    </div>
                                 @else
-                                    <li><a href="<?=url("login")?>"><i class="fa fa-lock"></i> Login</a>
-                                    </li>
+                                    <a href="<?=url("login")?>" type="button" class="btn btn-alert dropdown-toggle">
+                                        <i class="fa fa-lock"></i> Login
+                                    </a>
                                 @endif
+                            </div>
+                        </div>
 
-                            </ul>
+                        <div class="btn-group pull-right">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-alert dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-shopping-cart"></i> Cart <span
+                                            class="badge">{{\Illuminate\Support\Facades\Session::has('cart') ? \Illuminate\Support\Facades\Session::get('cart')->totalQty : ''}}</span>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    @if(\Illuminate\Support\Facades\Session::has('cart'))
+                                        <ul>
+                                            <li>
+                                                <div class="row" style="height: 180px">
+                                                    <?php
+                                                    $oldCart = \Illuminate\Support\Facades\Session::get('cart');
+                                                    $cart = new \App\Cart($oldCart);
+                                                    ?>
+                                                    @foreach($cart->items as $item)
+                                                        <span class="badge"></span>
+                                                        <img src="{{url('uploads/images/items/' . $item['item']['image'])}}"
+                                                             width="50px" alt=""/> <span
+                                                                class="badge">{{$item['qty']}}</span>
+                                                        <span class="label label-success">{{$item['price']}}</span><br>
+                                                    @endforeach
+                                                    <hr>
+                                                    <strong>Total : {{$cart->totalPrice}}</strong><br>
+                                                    <a href="{{route('shoppingCart')}}" type="button"
+                                                       class="btn btn-xs btn-primary"> View</a>
+                                                    <a href="" type="button" class="btn btn-xs btn-primary">
+                                                        Checkout</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @else
+                                        <ul>
+                                            <li>
+                                                <div>
+                                                    <br>
+                                                    No Items in Cart
+                                                    <hr>
+                                                    <a href="" type="button" class="btn btn-primary"> Explore</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
